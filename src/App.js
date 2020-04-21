@@ -9,15 +9,16 @@ function App() {
   const [page, setPage] = useState(0);
 
   function getCohortDictionary(args) {
-    API.getCohortDictionary(args)
-      .then((res) => {
-        console.log('result', res);
-        setPage(1);
-      })
-      .catch((err) => {
-        console.log(err);
-        setPage(1);
-      });
+    setPage(1);
+    // API.getCohortDictionary(args)
+    //   .then((res) => {
+    //     console.log('result', res);
+    //     setPage(1);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //     setPage(1);
+    //   });
   }
   return (
     <div id="mainContainer">

@@ -1,0 +1,12 @@
+.featureRow {
+    display: flex;
+    justify-content: space-evenly;
+}
+.featureDetailsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.featureDetailOperator {
+    width: 140px;
+}
