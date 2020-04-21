@@ -7,10 +7,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 #mainContainer {
-  min-height: 100vh;
+  height: 100vh;
   background-color: #F0F4F8;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
