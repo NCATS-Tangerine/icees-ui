@@ -17,6 +17,7 @@ export default function useFeature() {
   }
 
   function updateDetail(i, type, value) {
+    if (!isNaN(value)) value = Number(value);
     details[i][type] = value;
     updateDetails([...details]);
   }

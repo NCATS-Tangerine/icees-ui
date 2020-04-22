@@ -12,4 +12,9 @@
     margin: 10px 10px;
     min-height: 300px;
     padding-bottom: 30px;
+    text-align: center;
+}
+.cohortListItem.Mui-selected {
+    background-color: rgba(188, 204, 220, 0.6) !important;
+    border-radius: 10px;
 }

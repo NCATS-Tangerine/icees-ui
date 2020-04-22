@@ -22,7 +22,7 @@ export default function FeatureDetails(props) {
       />
       <div className="featureDetailsContainer">
         {feature.details.map((detail, index) => (
-          <div>
+          <div key={`feature-detail-${index}`}>
             <FormControl className="featureDetailOperator">
               <InputLabel id={`operator-select-${index}`}>Operator</InputLabel>
               <Select

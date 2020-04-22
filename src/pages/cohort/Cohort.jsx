@@ -10,13 +10,24 @@ import Tab from '@material-ui/core/Tab';
 
 import './cohort.css';
 
-// import API from '../../API';
 import FeatureAssociation from './FeatureAssociation';
 import FeatureExploration from './FeatureExploration';
+import CohortDialog from './CohortDialog';
 
-function Cohort() {
+function Cohort(props) {
+  const { store } = props;
   const [anchorEl, setAnchorEl] = useState(null);
   const [tab, setTab] = useState(0);
+  const [openCohorts, toggleCohorts] = useState(true);
+  const [cohortInd, setCohortInd] = useState(-1);
+
+  function featureAssociate(features) {
+    store.associateFeatures(cohortInd, features);
+  }
+
+  function featureExplore(feature) {
+    store.exploreFeature(cohortInd, feature);
+  }
 
   return (
     <div id="cohortContainer">
@@ -36,10 +47,10 @@ function Cohort() {
           <MenuItem onClick={() => setAnchorEl(null)}>Feature List</MenuItem>
           <MenuItem onClick={() => setAnchorEl(null)}>Explore</MenuItem>
         </Menu>
-        <h1>Cohort</h1>
+        <h1>{cohortInd > -1 ? store.cohorts[cohortInd].cohort_id : "Cohort"}</h1>
         <Button
           variant="contained"
-          onClick={() => console.log('open cohort dialog')}
+          onClick={() => toggleCohorts(true)}
         >
           Change Cohorts
         </Button>
@@ -57,11 +68,19 @@ function Cohort() {
         </Tabs>
         <FeatureExploration
           tab={tab}
+          explore={featureExplore}
         />
         <FeatureAssociation
           tab={tab}
+          associate={featureAssociate}
         />
       </Paper>
+      <CohortDialog
+        cohorts={store.cohorts}
+        open={openCohorts}
+        toggle={toggleCohorts}
+        setCohort={setCohortInd}
+      />
     </div>
   );
 }

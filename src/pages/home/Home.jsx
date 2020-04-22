@@ -9,7 +9,7 @@ import Button from '@material-ui/core/Button';
 import './home.css';
 
 function Home(props) {
-  const { submit } = props;
+  const { store } = props;
   const [table, updateTable] = useState('');
   const [year, updateYear] = useState('');
   const [dataSource, updateDataSource] = useState('UNCCHCS');
@@ -48,7 +48,7 @@ function Home(props) {
         <div className="footer">
           <Button
             variant="contained"
-            onClick={() => submit({ table, year, dataSource })}
+            onClick={() => store.getCohortDictionary({ table, year, dataSource })}
           >
             Continue
           </Button>

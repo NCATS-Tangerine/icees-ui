@@ -1,34 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 
-import API from './API';
+import useStore from './customHooks/useStore';
 import Home from './pages/home/Home';
 import Cohort from './pages/cohort/Cohort';
 
 function App() {
-  const [page, setPage] = useState(0);
-
-  function getCohortDictionary(args) {
-    setPage(1);
-    // API.getCohortDictionary(args)
-    //   .then((res) => {
-    //     console.log('result', res);
-    //     setPage(1);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //     setPage(1);
-    //   });
-  }
+  const store = useStore();
+  
   return (
     <div id="mainContainer">
-      {page === 0 && (
+      {store.page === 0 && (
         <Home
-          submit={getCohortDictionary}
+          store={store}
         />
       )}
-      {page === 1 && (
-        <Cohort />
+      {store.page === 1 && (
+        <Cohort
+          store={store}
+        />
       )}
     </div>
   );
