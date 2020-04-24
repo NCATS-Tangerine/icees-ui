@@ -5,18 +5,21 @@ import useFeature from '../../customHooks/useFeature';
 import FeatureDetails from './featureDetails/FeatureDetails';
 
 export default function FeatureExploration(props) {
-  const { tab, explore } = props;
+  const { tab, store } = props;
   const feature = useFeature();
   return (
     <>
-      {tab === 0 && (
+      {tab === 0 && store.selectedCohort && (
         <>
           <FeatureDetails
             feature={feature}
+            store={store}
           />
           <hr />
           <Button
-            onClick={() => explore(feature)}
+            onClick={() => store.exploreFeature(feature)}
+            variant="contained"
+            disabled={store.loading}
           >
             Explore
           </Button>

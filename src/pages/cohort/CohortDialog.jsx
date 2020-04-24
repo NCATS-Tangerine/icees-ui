@@ -7,41 +7,51 @@ import DialogActions from '@material-ui/core/DialogActions';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-// import Divider from '@material-ui/core/Divider';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 export default function CohortDialog(props) {
-  const { cohorts, open, toggle, setCohort } = props;
-  const [selectedCohortInd, setCohortInd] = useState(null);
+  const {
+    store, open, toggle,
+  } = props;
+  const [selectedCohortInd, setCohortInd] = useState(null); // initialize null if there are no cohorts
 
   return (
     <Dialog
       open={open}
-      onClose={() => toggle(false)}
+      onClose={() => {
+        if (store.selectedCohort !== null) {
+          toggle(false);
+        }
+      }}
       fullWidth
       maxWidth="md"
     >
       <DialogTitle>Choose a cohort</DialogTitle>
-      <DialogContent>
-        <List component="nav" aria-label="main mailbox folders">
-          {cohorts.map((cohort, index) => (
-            <ListItem
-              button
-              className="cohortListItem"
-              selected={selectedCohortInd === index}
-              onClick={() => setCohortInd(index)}
-              key={`cohort-${index}`}
-            >
-              <ListItemText
-                primary={cohort.cohort_id}
-                secondary={
-                  <>
-                    {JSON.stringify(cohort)}
-                  </>
-                }
-              />
-            </ListItem>
-          ))}
-        </List>
+      <DialogContent className="cohortDialogContent">
+        {!store.loading ? (
+          <List>
+            {store.cohorts.map((cohort, index) => (
+              <ListItem
+                button
+                className="cohortListItem"
+                selected={selectedCohortInd === index}
+                onClick={() => setCohortInd(index)}
+                key={`cohort-${index}`}
+              >
+                <ListItemText
+                  primary={cohort.cohort_id}
+                  secondary={
+                    <>
+                      {JSON.stringify(cohort)}
+                    </>
+                  }
+                />
+              </ListItem>
+            ))}
+          </List>
+        ) : (
+          <CircularProgress size={50} thickness={5} />
+        )}
       </DialogContent>
       <DialogActions>
         <Button
@@ -51,9 +61,10 @@ export default function CohortDialog(props) {
           Add a cohort
         </Button>
         <Button
+          disabled={selectedCohortInd === null}
           onClick={() => {
             toggle(false);
-            setCohort(selectedCohortInd);
+            store.setCohort(selectedCohortInd);
           }}
         >
           Ok

@@ -11,10 +11,21 @@
 #cohortPaper {
     margin: 10px 10px;
     min-height: 300px;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
     text-align: center;
 }
 .cohortListItem.Mui-selected {
     background-color: rgba(188, 204, 220, 0.6) !important;
     border-radius: 10px;
+}
+.cohortDialogContent {
+    max-height: 400px;
+    overflow: auto;
+}
+.spinnerContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0px;
 }

@@ -5,23 +5,27 @@ import useFeature from '../../customHooks/useFeature';
 import FeatureDetails from './featureDetails/FeatureDetails';
 
 export default function FeatureAssociation(props) {
-  const { tab, associate } = props;
+  const { tab, store } = props;
   const feature1 = useFeature();
   const feature2 = useFeature();
   return (
     <>
-      {tab === 1 && (
+      {tab === 1 && store.selectedCohort && (
         <>
           <FeatureDetails
             feature={feature1}
+            store={store}
           />
           <hr />
           <FeatureDetails
             feature={feature2}
+            store={store}
           />
           <hr />
           <Button
-            onClick={() => associate([feature1, feature2])}
+            onClick={() => store.associateFeatures([feature1, feature2])}
+            variant="contained"
+            disabled={store.loading}
           >
             Find Associations
           </Button>

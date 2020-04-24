@@ -1,13 +1,13 @@
 import { useState } from 'react';
 
-const defaultOperator = '='
+const newDetail = { operator: '', value: '' };
 
 export default function useFeature() {
   const [feature, update] = useState('');
   const [details, updateDetails] = useState([]);
 
   function add() {
-    details.push({ operator: defaultOperator, value: '' });
+    details.push({...newDetail});
     updateDetails([...details]);
   }
 
@@ -22,10 +22,17 @@ export default function useFeature() {
     updateDetails([...details]);
   }
 
+  function updateName(value) {
+    if (value !== feature) {
+      update(value);
+      updateDetails([{...newDetail}]);
+    }
+  }
+
   return {
     feature,
     details,
-    update,
+    updateName,
     add,
     remove,
     updateDetail,

@@ -1,12 +1,22 @@
 .featureRow {
     display: flex;
     justify-content: space-evenly;
+    padding: 20px;
 }
 .featureDetailsContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    width: 50%;
 }
 .featureDetailOperator {
     width: 140px;
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+}
+.featureName {
+    width: 50%;
+}
+.featureDetails {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 10px;
 }

@@ -61,6 +61,19 @@ const API = {
         reject(error);
       });
   }),
+  getCohortFeatures: (args) => new Promise((resolve, reject) => {
+    axios.request({
+      method: 'GET',
+      url: url(`${args.table}/${args.year}/cohort/${args.cohort_id}/features`),
+    })
+      .then((res) => {
+        resolve(res.data);
+      })
+      .catch((err) => {
+        const error = errorHandling(err);
+        reject(error);
+      });
+  }),
 };
 
 export default API;

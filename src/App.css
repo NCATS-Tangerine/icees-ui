@@ -7,6 +7,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 #mainContainer {
-  height: 100vh;
+  min-height: 100vh;
   background-color: #F0F4F8;
 }

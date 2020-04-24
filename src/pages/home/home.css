@@ -1,5 +1,5 @@
 #homeContainer {
-  height: 100%;
+  height: 100vh;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -15,6 +15,11 @@
 }
 #homePaper.MuiPaper-rounded {
   border-radius: 30px;
+}
+#homepageForm {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 #homeInputs {
   flex: 1 0 auto;
