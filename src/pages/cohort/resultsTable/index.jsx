@@ -7,6 +7,35 @@ import './resultsTable.css';
 import ResultsTable from './ResultsTable';
 import SingleResultTable from './SingleResult';
 
+function buildSingleTableSpec(tableInfo) {
+  const columns = [];
+  columns.push({
+    Header: () => null,
+    id: 'feature_b_qualifiers',
+    Cell: ({ row }) => {
+      const qualifier = tableInfo.feature_b.feature_qualifiers[row.index];
+      return (
+        <span>
+          {`${qualifier.operator} ${qualifier.value}`}
+        </span>
+      );
+    },
+  });
+  tableInfo.feature_a.feature_qualifiers.forEach((qualifier, i) => {
+    columns.push({
+      Header: `${qualifier.operator} ${qualifier.value}`,
+      accessor: (row) => row[i].frequency,
+    });
+  });
+  return columns;
+}
+
+function getSingleTableAxes(tableInfo) {
+  const xAxis = tableInfo.feature_a.feature_name;
+  const yAxis = tableInfo.feature_b.feature_name;
+  return { xAxis, yAxis };
+}
+
 export default function ResultsTableWrapper(props) {
   const { store, tab } = props;
   const [exploreColumns, setExploreColumns] = useState([]);
@@ -16,44 +45,16 @@ export default function ResultsTableWrapper(props) {
 
   useEffect(() => {
     if (tab === 0 && !store.exploreResponse && exploreColumns.length) {
+      console.log('clearing table');
       setExploreColumns([]);
       setExploreResults([]);
     }
     if (tab === 1 && !store.associateResponse && associateColumns.length) {
+      console.log('clearing table 1');
       setAssociateColumns([]);
       setAssociateResults([]);
     }
-  }, [tab, store.exploreResponse, store.associateResponse]);
-
-  function buildSingleTableSpec(tableInfo) {
-    console.log('table info', tableInfo);
-    const columns = [];
-    columns.push({
-      Header: () => null,
-      id: 'feature_b_qualifiers',
-      Cell: ({ row }) => {
-        const qualifier = tableInfo.feature_b.feature_qualifiers[row.index];
-        return (
-          <span>
-            {`${qualifier.operator} ${qualifier.value}`}
-          </span>
-        );
-      },
-    });
-    tableInfo.feature_a.feature_qualifiers.forEach((qualifier, i) => {
-      columns.push({
-        Header: `${qualifier.operator} ${qualifier.value}`,
-        accessor: (row) => row[i].frequency,
-      });
-    });
-    return columns;
-  }
-
-  function getSingleTableAxes(tableInfo) {
-    const xAxis = tableInfo.feature_a.feature_name;
-    const yAxis = tableInfo.feature_b.feature_name;
-    return { xAxis, yAxis };
-  }
+  }, [tab, store.loading]); // eslint-disable-line
 
   useEffect(() => {
     if (tab === 0 && store.exploreResponse && !exploreColumns.length) {
@@ -99,14 +100,14 @@ export default function ResultsTableWrapper(props) {
       setAssociateColumns(columns);
       setAssociateResults(store.associateResponse.feature_matrix);
     }
-  }, [tab, store.exploreResponse, store.associateResponse]);
+  }, [tab, store.loading]); // eslint-disable-line
   return (
     <div id="resultsTableContainer">
       {!store.loading ? (
         <>
           {tab === 0 && (
             <>
-              {store.exploreResponse && (
+              {exploreColumns.length > 0 && (
                 <ResultsTable
                   columns={exploreColumns}
                   data={exploreResults}
@@ -118,7 +119,7 @@ export default function ResultsTableWrapper(props) {
           )}
           {tab === 1 && (
             <>
-              {store.associateResponse && (
+              {associateColumns.length > 0 && (
                 <SingleResultTable
                   columns={associateColumns}
                   data={associateResults}
@@ -129,7 +130,9 @@ export default function ResultsTableWrapper(props) {
           )}
         </>
       ) : (
-        <CircularProgress size={100} thickness={5} className="centered" />
+        <div className="spinnerContainer">
+          <CircularProgress size={100} thickness={5} className="centered" />
+        </div>
       )}
     </div>
   );

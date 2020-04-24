@@ -14,12 +14,9 @@ export default function useStore() {
   const [associateResponse, setAssociateResponse] = useState(null);
 
   function getCohortDictionary(args) {
-    setExploreResponse(null);
-    setAssociateResponse(null);
     setLoading(true);
     API.getCohortDictionary(args)
       .then((res) => {
-        console.log('result', res);
         const response = _.cloneDeep(res['return value']);
         setCohorts(response);
         setCommonObj({ table: args.table, year: args.year });
@@ -27,7 +24,7 @@ export default function useStore() {
         setLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        console.log('Error', err);
         setCommonObj({});
         setPage(0);
         setLoading(false);
@@ -47,7 +44,6 @@ export default function useStore() {
     };
     API.exploreFeature({ ...commonObj, cohort_id, data })
       .then((res) => {
-        console.log(res);
         const response = _.cloneDeep(res['return value']);
         setExploreResponse(response);
         setLoading(false);
@@ -68,7 +64,6 @@ export default function useStore() {
     };
     API.associateFeatures({ ...commonObj, cohort_id, data })
       .then((res) => {
-        console.log(res);
         const response = _.cloneDeep(res['return value']);
         setAssociateResponse(response);
         setLoading(false);
@@ -85,13 +80,13 @@ export default function useStore() {
       return;
     }
     setLoadingCohort(true);
+    setExploreResponse(null);
+    setAssociateResponse(null);
     const { cohort_id } = cohorts[cohortIndex];
     API.getCohortFeatures({ ...commonObj, cohort_id })
       .then((res) => {
-        console.log(res);
         const cohort = _.cloneDeep(cohorts[cohortIndex]);
         cohort.features = res['return value'].map((featureObj) => featureObj.feature);
-        console.log(cohort);
         setSelectedCohort(cohort);
         setLoadingCohort(false);
       })

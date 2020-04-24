@@ -10,7 +10,6 @@ import './resultsTable.css';
 
 export default function SingleResultTable(props) {
   const { columns, data, axes } = props;
-  console.log('props', props);
   const {
     getTableProps,
     getTableBodyProps,

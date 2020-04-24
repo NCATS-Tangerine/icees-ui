@@ -27,49 +27,48 @@ export default function CohortDialog(props) {
       maxWidth="md"
     >
       <DialogTitle>Choose a cohort</DialogTitle>
-      <DialogContent className="cohortDialogContent">
-        {!store.loading ? (
-          <List>
-            {store.cohorts.map((cohort, index) => (
-              <ListItem
-                button
-                className="cohortListItem"
-                selected={selectedCohortInd === index}
-                onClick={() => setCohortInd(index)}
-                key={`cohort-${index}`}
-              >
-                <ListItemText
-                  primary={cohort.cohort_id}
-                  secondary={
-                    <>
-                      {JSON.stringify(cohort)}
-                    </>
-                  }
-                />
-              </ListItem>
-            ))}
-          </List>
-        ) : (
-          <CircularProgress size={50} thickness={5} />
-        )}
-      </DialogContent>
-      <DialogActions>
-        <Button
-          onClick={() => toggle(false)}
-          disabled
-        >
-          Add a cohort
-        </Button>
-        <Button
-          disabled={selectedCohortInd === null}
-          onClick={() => {
-            toggle(false);
-            store.setCohort(selectedCohortInd);
-          }}
-        >
-          Ok
-        </Button>
-      </DialogActions>
+      <form onSubmit={(e) => { e.preventDefault(); toggle(false); store.setCohort(selectedCohortInd); }}>
+        <DialogContent className="cohortDialogContent">
+          {!store.loading ? (
+            <List>
+              {store.cohorts.map((cohort, index) => (
+                <ListItem
+                  button
+                  className="cohortListItem"
+                  selected={selectedCohortInd === index}
+                  onClick={() => setCohortInd(index)}
+                  key={`cohort-${index}`}
+                >
+                  <ListItemText
+                    primary={cohort.cohort_id}
+                    secondary={
+                      <>
+                        {JSON.stringify(cohort)}
+                      </>
+                    }
+                  />
+                </ListItem>
+              ))}
+            </List>
+          ) : (
+            <CircularProgress size={50} thickness={5} />
+          )}
+        </DialogContent>
+        <DialogActions>
+          <Button
+            onClick={() => toggle(false)}
+            disabled
+          >
+            Add a cohort
+          </Button>
+          <Button
+            disabled={selectedCohortInd === null}
+            type="submit"
+          >
+            Ok
+          </Button>
+        </DialogActions>
+      </form>
     </Dialog>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useTable, useExpanded, usePagination, useSortBy } from 'react-table';
 import MuiTable from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -28,7 +28,7 @@ export default function ResultsTable(props) {
     setPageSize,
     state: { pageIndex, pageSize },
     visibleColumns,
-    state: { expanded },
+    // state: { expanded },
   } = useTable(
     {
       columns,
@@ -56,10 +56,6 @@ export default function ResultsTable(props) {
     useExpanded,
     usePagination,
   );
-
-  useEffect(() => {
-    console.log('expanded', expanded);
-  }, [expanded]);
 
   return (
     <div id="resultsTable">
