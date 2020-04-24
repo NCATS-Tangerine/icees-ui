@@ -10,3 +10,8 @@ body {
   min-height: 100vh;
   background-color: #F0F4F8;
 }
+@media (max-width: 650px) {
+  #mainContainer {
+    width: 650px;
+  }
+}
