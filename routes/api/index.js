@@ -3,6 +3,7 @@ const axios = require('axios');
 const https = require('https');
 const config = require('../../config.json');
 
+// this basically bypasses certificate checks.
 const httpsAgent = new https.Agent({ rejectUnauthorized: false });
 
 const url = (ext) => `${config.protocol}://${config.host}:${config.port}/${ext}`;
