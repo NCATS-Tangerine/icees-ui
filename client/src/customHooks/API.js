@@ -1,9 +1,5 @@
 import axios from 'axios';
 
-const config = require('../config.json');
-
-const url = (ext) => `${config.protocol}://${config.host}:${config.port}/${ext}`;
-
 function errorHandling(err) {
   /* eslint-disable no-console */
   let errorText = '';
@@ -24,20 +20,24 @@ function errorHandling(err) {
 
 const API = {
   getCohortDictionary: (args) => new Promise((resolve, reject) => {
-    axios.get(url(`${args.table}/${args.year}/cohort/dictionary`))
+    axios.request({
+      method: 'POST',
+      url: '/api/dictionary',
+      data: args,
+    })
       .then((res) => {
         resolve(res.data);
       })
       .catch((err) => {
         const error = errorHandling(err);
         reject(error);
-      });
+      })
   }),
   exploreFeature: (args) => new Promise((resolve, reject) => {
     axios.request({
       method: 'POST',
-      url: url(`${args.table}/${args.year}/cohort/${args.cohort_id}/associations_to_all_features2`),
-      data: args.data,
+      url: '/api/explore',
+      data: args,
     })
       .then((res) => {
         resolve(res.data);
@@ -50,8 +50,8 @@ const API = {
   associateFeatures: (args) => new Promise((resolve, reject) => {
     axios.request({
       method: 'POST',
-      url: url(`${args.table}/${args.year}/cohort/${args.cohort_id}/feature_association2`),
-      data: args.data,
+      url: '/api/associate',
+      data: args,
     })
       .then((res) => {
         resolve(res.data);
@@ -63,8 +63,9 @@ const API = {
   }),
   getCohortFeatures: (args) => new Promise((resolve, reject) => {
     axios.request({
-      method: 'GET',
-      url: url(`${args.table}/${args.year}/cohort/${args.cohort_id}/features`),
+      method: 'POST',
+      url: '/api/cohort_features',
+      data: args,
     })
       .then((res) => {
         resolve(res.data);
