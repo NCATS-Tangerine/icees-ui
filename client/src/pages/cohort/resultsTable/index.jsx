@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import IconButton from '@material-ui/core/IconButton';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
@@ -45,16 +46,19 @@ export default function ResultsTableWrapper(props) {
 
   useEffect(() => {
     if (tab === 0 && !store.exploreResponse && exploreColumns.length) {
-      console.log('clearing table');
       setExploreColumns([]);
       setExploreResults([]);
     }
     if (tab === 1 && !store.associateResponse && associateColumns.length) {
-      console.log('clearing table 1');
       setAssociateColumns([]);
       setAssociateResults([]);
     }
   }, [tab, store.loading]); // eslint-disable-line
+
+  const onExpand = useCallback((row, toggleAllRowsExpanded) => {
+    toggleAllRowsExpanded(false);
+    row.toggleRowExpanded(!row.isExpanded);
+  }, []);
 
   useEffect(() => {
     if (tab === 0 && store.exploreResponse && !exploreColumns.length) {
@@ -63,13 +67,13 @@ export default function ResultsTableWrapper(props) {
         // Make an expander cell
         Header: () => null, // No header
         id: 'expander', // It needs an ID
-        Cell: ({ row }) => (
+        Cell: ({ row, toggleAllRowsExpanded }) => (
           // Use Cell to render an expander for each row.
           // We can use the getToggleRowExpandedProps prop-getter
           // to build the expander.
-          <span {...row.getToggleRowExpandedProps()}>
+          <IconButton onClick={() => onExpand(row, toggleAllRowsExpanded)}>
             {row.isExpanded ? <ArrowDropDownIcon /> : <ArrowRightIcon />}
-          </span>
+          </IconButton>
         ),
       });
       columns.push({
@@ -101,6 +105,7 @@ export default function ResultsTableWrapper(props) {
       setAssociateResults(store.associateResponse.feature_matrix);
     }
   }, [tab, store.loading]); // eslint-disable-line
+
   return (
     <div id="resultsTableContainer">
       {!store.loading ? (
