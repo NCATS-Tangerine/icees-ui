@@ -28,7 +28,6 @@ export default function ResultsTable(props) {
     setPageSize,
     state: { pageIndex, pageSize },
     visibleColumns,
-    // state: { expanded },
   } = useTable(
     {
       columns,
