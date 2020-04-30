@@ -6,21 +6,21 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
-import './resultsTable.css';
+export default function AssociateTable(props) {
+  const { data, columns } = props;
 
-export default function SingleResultTable(props) {
-  const { columns, data, axes } = props;
   const {
     getTableProps,
     getTableBodyProps,
     headerGroups,
     prepareRow,
     rows,
-  } = useTable({ columns, data });
+  } = useTable({ columns, data: data.feature_matrix });
+
   return (
     <div className="singleResultTable">
-      <h5 className="xAxisTitle">{axes.xAxis}</h5>
-      <h5 className="yAxisTitle">{axes.yAxis}</h5>
+      <h5 className="xAxisTitle">{data.feature_a.feature_name}</h5>
+      <h5 className="yAxisTitle">{data.feature_b.feature_name}</h5>
       <MuiTable {...getTableProps()}>
         <TableHead>
           {headerGroups.map((headerGroup) => (
