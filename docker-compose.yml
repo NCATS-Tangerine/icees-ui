@@ -1,9 +1,8 @@
 version: '3.7'
 
 services:
-
-  sample:
-    container_name: sample
+  iceesui:
+    container_name: iceesui
     build:
       context: .
       dockerfile: Dockerfile
@@ -11,7 +10,7 @@ services:
       - '.:/app'
       - '/app/node_modules'
     ports:
-      - 3001:3000
+      - 4567:4567
     environment:
       - CHOKIDAR_USEPOLLING=true
 

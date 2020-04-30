@@ -1,4 +1,5 @@
 import axios from 'axios';
+// const baseURL = 'http://localhost:3001';
 
 function errorHandling(err) {
   /* eslint-disable no-console */
@@ -22,6 +23,7 @@ const API = {
   getCohortDictionary: (args) => new Promise((resolve, reject) => {
     axios.request({
       method: 'POST',
+      // url: `${baseURL}/api/dictionary`,
       url: '/api/dictionary',
       data: args,
     })
@@ -36,6 +38,7 @@ const API = {
   exploreFeature: (args) => new Promise((resolve, reject) => {
     axios.request({
       method: 'POST',
+      // url: `${baseURL}/api/explore`,
       url: '/api/explore',
       data: args,
     })
@@ -50,6 +53,7 @@ const API = {
   associateFeatures: (args) => new Promise((resolve, reject) => {
     axios.request({
       method: 'POST',
+      // url: `${baseURL}/api/associate`,
       url: '/api/associate',
       data: args,
     })
@@ -64,6 +68,7 @@ const API = {
   getCohortFeatures: (args) => new Promise((resolve, reject) => {
     axios.request({
       method: 'POST',
+      // url: `${baseURL}/api/cohort_features`,
       url: '/api/cohort_features',
       data: args,
     })

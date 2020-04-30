@@ -90,15 +90,15 @@ export default function ResultsTable(props) {
                   ))}
                 </TableRow>
                 {row.isExpanded ? (
-                  <tr>
-                    <td colSpan={visibleColumns.length} className="expandedRow">
+                  <TableRow>
+                    <TableCell colSpan={visibleColumns.length} className="expandedRow">
                       <SingleResultTable
                         columns={buildSubComponent(row.original)}
                         data={row.original.feature_matrix}
                         axes={getAxes(row.original)}
                       />
-                    </td>
-                  </tr>
+                    </TableCell>
+                  </TableRow>
                 ) : null}
               </React.Fragment>
             );
