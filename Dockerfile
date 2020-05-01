@@ -6,13 +6,13 @@ WORKDIR /app
 ENV NODE_ENV production
 
 COPY . ./
-RUN cd client
+WORKDIR /app/client
 RUN yarn install
-RUN cd ..
+WORKDIR /app
 
 RUN yarn install
 RUN yarn build
-EXPOSE 4567
+EXPOSE 11633
 CMD ["yarn", "server"]
 
 
