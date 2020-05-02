@@ -1235,9 +1235,9 @@
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
 "@scarf/scarf@^0.1.5":
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/@scarf/scarf/-/scarf-0.1.5.tgz#fc4cc88294eca336eed9a91549180346de5e6946"
-  integrity sha512-Fx6atDc7JM1r0WkPCDhNetVZNp+DO21q/HGlomAKBG+k8vb1B8fg8Yige4oCf1P9OWTZWm5tM5i3jlXhrSbNOg==
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@scarf/scarf/-/scarf-0.1.7.tgz#e6ffb3660bda77f96037f8c4e21174177fed2d97"
+  integrity sha512-XUBa8nl9J1XGyyA+wul1ko5v5ioNU1s/pUPODnPzJ4+uUOwwYZm197KQoxxzOAsypldlFGnAlQ8nkjTjoQV9GQ==
 
 "@svgr/babel-plugin-add-jsx-attribute@^4.2.0":
   version "4.2.0"

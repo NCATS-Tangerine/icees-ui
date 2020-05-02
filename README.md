@@ -1,21 +1,20 @@
-# icees-ui
+# ICEES UI
 
-## Usage
+## Setup
 ```bash
 yarn install
 cd client
 yarn install
 cd ..
-yarn build
 ```
 
-### local
+### Run locally
 
 ```bash
 yarn start
 ```
 
-### Docker
+### Deploy
 
 ```bash
 docker-compose up

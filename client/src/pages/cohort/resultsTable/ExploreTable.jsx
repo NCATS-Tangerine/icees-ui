@@ -6,13 +6,10 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
-// import SortIcon from '@material-ui/icons/Sort';
 
-import './resultsTable.css';
-import SingleResultTable from './SingleResult';
+import AssociateTableWrapper from './AssociateTableWrapper';
 
-export default function ResultsTable(props) {
-  const { columns, data, buildSubComponent, getAxes } = props;
+export default function ExploreTable({ columns, data }) {
   const {
     getTableProps,
     getTableBodyProps,
@@ -90,15 +87,13 @@ export default function ResultsTable(props) {
                   ))}
                 </TableRow>
                 {row.isExpanded ? (
-                  <tr>
-                    <td colSpan={visibleColumns.length} className="expandedRow">
-                      <SingleResultTable
-                        columns={buildSubComponent(row.original)}
-                        data={row.original.feature_matrix}
-                        axes={getAxes(row.original)}
+                  <TableRow>
+                    <TableCell colSpan={visibleColumns.length} className="expandedRow">
+                      <AssociateTableWrapper
+                        data={row.original}
                       />
-                    </td>
-                  </tr>
+                    </TableCell>
+                  </TableRow>
                 ) : null}
               </React.Fragment>
             );
