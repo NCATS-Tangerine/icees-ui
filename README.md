@@ -14,6 +14,13 @@ cd ..
 yarn start
 ```
 
+### Run production locally
+
+```bash
+yarn build
+yarn server
+```
+
 ### Deploy
 
 ```bash
