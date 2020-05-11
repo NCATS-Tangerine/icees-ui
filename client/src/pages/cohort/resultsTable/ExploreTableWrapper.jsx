@@ -52,7 +52,7 @@ export default function ExploreTableWrapper(props) {
 
   return (
     <>
-      {data && data.length > 0 && (
+      {data && (
         <ExploreTable
           columns={columns}
           data={data}

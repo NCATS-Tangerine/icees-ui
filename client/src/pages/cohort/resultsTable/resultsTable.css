@@ -1,6 +1,7 @@
 #resultsTableContainer {
     margin: 20px 10px;
     min-height: 200px;
+    position: relative;
 }
 .centered {
     margin: auto;
@@ -37,4 +38,13 @@
 }
 .expandedRow {
     background-color: rgba(240, 244, 248, 0.6) !important;
+}
+#emptyTableOverlay {
+    position: absolute;
+    top: 40%;
+    left: 45%;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid grey;
+    border-radius: 5px;
 }
