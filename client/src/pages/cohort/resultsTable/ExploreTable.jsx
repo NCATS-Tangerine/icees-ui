@@ -8,6 +8,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
 
 import AssociateTableWrapper from './AssociateTableWrapper';
+import EmptyTable from './EmptyTable';
 
 export default function ExploreTable({ columns, data }) {
   const {
@@ -75,7 +76,7 @@ export default function ExploreTable({ columns, data }) {
           ))}
         </TableHead>
         <TableBody {...getTableBodyProps()}>
-          {page.map((row, i) => {
+          {page.length ? page.map((row, i) => {
             prepareRow(row);
             return (
               <React.Fragment key={`results-table-row-${i}`}>
@@ -97,9 +98,17 @@ export default function ExploreTable({ columns, data }) {
                 ) : null}
               </React.Fragment>
             );
-          })}
+          }) : (
+            <EmptyTable
+              numRows={10}
+              numCells={visibleColumns.length}
+            />
+          )}
         </TableBody>
       </MuiTable>
+      {!page.length > 0 && (
+        <div id="emptyTableOverlay">No Results</div>
+      )}
       <div className="pagination">
         <Button
           onClick={() => previousPage()}

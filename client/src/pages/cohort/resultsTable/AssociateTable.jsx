@@ -6,6 +6,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
+import EmptyTable from './EmptyTable';
+
 export default function AssociateTable(props) {
   const { data, columns } = props;
 
@@ -15,6 +17,7 @@ export default function AssociateTable(props) {
     headerGroups,
     prepareRow,
     rows,
+    visibleColumns,
   } = useTable({ columns, data: data.feature_matrix });
 
   return (
@@ -34,7 +37,7 @@ export default function AssociateTable(props) {
           ))}
         </TableHead>
         <TableBody {...getTableBodyProps()}>
-          {rows.map((row, i) => {
+          {rows.length ? rows.map((row, i) => {
             prepareRow(row);
             return (
               <TableRow {...row.getRowProps()}>
@@ -45,9 +48,17 @@ export default function AssociateTable(props) {
                 ))}
               </TableRow>
             );
-          })}
+          }) : (
+            <EmptyTable
+              numRows={10}
+              numCells={visibleColumns.length}
+            />
+          )}
         </TableBody>
       </MuiTable>
+      {!rows.length > 0 && (
+        <div id="emptyTableOverlay">No Results</div>
+      )}
     </div>
   );
 }
