@@ -55,6 +55,14 @@ export default function CohortDialog(props) {
           )}
         </DialogContent>
         <DialogActions>
+          {selectedCohortInd === null && (
+            <Button
+              onClick={() => store.setPage(0)}
+            >
+              Cancel
+            </Button>
+          )}
+          <div className="divider" />
           <Button
             onClick={() => toggle(false)}
             disabled
