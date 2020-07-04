@@ -13,8 +13,8 @@ body {
   position: relative;
   background-color: #F0F4F8;
   /* For the footer */
-  padding-bottom: 50px;
-  min-height: calc(100% - 50px);
+  padding-bottom: 60px;
+  min-height: calc(100% - 60px);
 }
 @media (max-width: 650px) {
   #mainContainer {
