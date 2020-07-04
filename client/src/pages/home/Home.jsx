@@ -22,8 +22,10 @@ function Home(props) {
   return (
     <div id="homeContainer">
       <Paper elevation={15} id="homePaper">
-        <h1>ICEES+ KP</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <h1 id="icees_title">ICEES</h1>
+        <h2 id="icees_text">
+          <b>I</b>ntegrated <b>C</b>linical and <b>E</b>nvironmental <b>E</b>xposures <b>S</b>ervice
+        </h2>
         <form onSubmit={submit} id="homepageForm">
           <div id="homeInputs">
             <TextField

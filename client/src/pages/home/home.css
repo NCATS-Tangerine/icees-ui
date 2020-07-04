@@ -1,5 +1,6 @@
 #homeContainer {
   height: 100vh;
+  min-height: 500px;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -16,6 +17,12 @@
 }
 #homePaper.MuiPaper-rounded {
   border-radius: 30px;
+}
+#icees_title {
+  font-size: 60px;
+}
+#icees_text {
+  font-weight: normal;
 }
 #homepageForm {
   height: 100%;
