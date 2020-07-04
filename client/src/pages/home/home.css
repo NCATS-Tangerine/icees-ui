@@ -1,21 +1,26 @@
 #homeContainer {
-  height: 100vh;
   min-height: 500px;
   text-align: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-#homePaper {
+.homePagePaper {
   width: 70%;
-  height: 80%;
-  max-height: 500px;
-  max-width: 800px;
-  display: flex;
-  flex-direction: column;
+  max-width: 900px;
   padding: 20px;
 }
-#homePaper.MuiPaper-rounded {
+#homeTitle {
+  height: 500px;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+}
+#homeTitle p {
+  text-align: left;
+}
+#homeTitle.MuiPaper-rounded, #homeForm.MuiPaper-rounded {
   border-radius: 30px;
 }
 #icees_title {
@@ -23,6 +28,9 @@
 }
 #icees_text {
   font-weight: normal;
+}
+#homeForm {
+  margin: 30px;
 }
 #homepageForm {
   height: 100%;
@@ -38,7 +46,7 @@
 #homeInputs > * {
   margin: 0 30px;
 }
-.footer {
+#formSubmit {
   height: 70px;
   flex-shrink: 0;
   display: flex;

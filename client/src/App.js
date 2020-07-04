@@ -5,6 +5,8 @@ import useStore from './customHooks/useStore';
 import Home from './pages/home/Home';
 import Cohort from './pages/cohort/Cohort';
 
+import Footer from './commonComponents/footer/Footer';
+
 function App() {
   const store = useStore();
   
@@ -20,6 +22,7 @@ function App() {
           store={store}
         />
       )}
+      <Footer />
     </div>
   );
 }
