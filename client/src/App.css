@@ -1,3 +1,6 @@
+body, html, #root {
+  height: 100%;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -7,8 +10,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 #mainContainer {
-  min-height: 100vh;
+  position: relative;
   background-color: #F0F4F8;
+  /* For the footer */
+  padding-bottom: 60px;
+  min-height: calc(100% - 60px);
 }
 @media (max-width: 650px) {
   #mainContainer {
