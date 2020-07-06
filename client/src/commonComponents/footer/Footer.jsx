@@ -15,7 +15,7 @@ export default function Footer() {
   return (
     <div id="icees_footer">
       <p>
-        ICEES+ is a joint creation of RENCI and CoVar with support provided by
+        ICEES+ is a joint creation of RENCI, NC TraCS, NIEHS, and CoVar with support provided by
         the National Center for Advancing Translational Sciences,
         National Institutes of Health [OT3TR002020, OT2TR003430, UL1TR002489] and
         the Intramural Research Program of the National Institute of Environmental Health Sciences,
@@ -49,7 +49,10 @@ export default function Footer() {
             permitted to provide under 45 C.F.R. § 164.502(d)(2). Recipient agrees to notify
             UNC Health via RENCI in the event that Recipient receives any identifiable data
             in error and to take such measures to return the identifiable data and/or destroy
-            it at the direction of UNC Healthn\nRestrictions on Recipient’s Use of Data.
+            it at the direction of UNC Health.
+            <br /><br />
+            <i>Restrictions on Recipient’s Use of Data.</i>
+            <br />
             Recipient further agrees to use the Data exclusively for the purposes and functionalities
             provided by the ICEES+ service: cohort discovery; feature-rich cohort discovery;
             hypothesis-driven queries; and exploratory queries. Recipient agrees to use appropriate
