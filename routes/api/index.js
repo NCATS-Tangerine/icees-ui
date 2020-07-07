@@ -3,10 +3,14 @@ const axios = require('axios');
 const https = require('https');
 const config = require('../../config.json');
 
+const protocol = process.env.ICEES_PROTOCOL || config.protocol;
+const host = process.env.ICEES_HOST || config.host;
+const port = process.env.ICEES_PORT || config.port;
+
 // this basically bypasses certificate checks.
 const httpsAgent = new https.Agent({ rejectUnauthorized: false });
 
-const url = (ext) => `${config.protocol}://${config.host}:${config.port}/${ext}`;
+const url = (ext) => `${protocol}://${host}:${port}/${ext}`;
 
 router.route("/dictionary")
   .post((req, res) => {
