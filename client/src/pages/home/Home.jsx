@@ -39,7 +39,7 @@ function Home(props) {
           Additional information on ICEES can be
           found <a href="https://researchsoftwareinstitute.github.io/data-translator/apps/icees" target="_blank" rel="noopener noreferrer">here</a>.
           <br /><br />
-          The ICEES API can be accessed <a href="https://icees.renci.org:16339/apidocs/" target="_blank" rel="noopener noreferrer">here</a>.
+          The ICEES API can be accessed <a href="https://icees.renci.org:16340/apidocs/" target="_blank" rel="noopener noreferrer">here</a>.
           <br /><br />
           We welcome new user engagement! Please post issues, comments, and suggestions on
           the UI <a href="https://github.com/NCATS-Tangerine/icees-ui/issues" target="_blank" rel="noopener noreferrer">here</a> and
